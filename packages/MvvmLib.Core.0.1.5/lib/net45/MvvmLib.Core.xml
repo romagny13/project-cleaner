@@ -1,0 +1,1048 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MvvmLib.Core</name>
+    </assembly>
+    <members>
+        <member name="T:MvvmLib.Message.EmptyEvent">
+            <summary>
+            Event with no event args or parameter.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.EmptyEvent.SynchronizationContext">
+            <summary>
+            The synchronization context.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.EmptyEvent.Contains(System.Action)">
+            <summary>
+            Checks if a subscriber is registered for the action.
+            </summary>
+            <param name="action">The action</param>
+            <returns>True if registered</returns>
+        </member>
+        <member name="M:MvvmLib.Message.EmptyEvent.Subscribe(System.Action)">
+            <summary>
+            Allows to subscribe to the event.
+            </summary>
+            <param name="action">The action</param>
+            <returns>The subscription options</returns>
+        </member>
+        <member name="M:MvvmLib.Message.EmptyEvent.Unsubscribe(MvvmLib.Message.SubscriptionToken)">
+            <summary>
+            Allows to unsubscribe with the subscription token.
+            </summary>
+            <param name="token">The subscription token</param>
+            <returns>True if unsubscribed</returns>
+        </member>
+        <member name="M:MvvmLib.Message.EmptyEvent.Publish">
+            <summary>
+            Notifies all subscribers.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Message.SubscriberOptions">
+            <summary>
+            Subscriber options class.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.SubscriberOptions.Token">
+            <summary>
+            The token.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriberOptions.#ctor(MvvmLib.Message.Subscriber)">
+            <summary>
+            Creates the subscriber options class.
+            </summary>
+            <param name="subscriber">The subscriber</param>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriberOptions.WithExecutionStrategy(MvvmLib.Message.ExecutionStrategyType)">
+            <summary>
+            Allows to change executionstrategy.
+            </summary>
+            <param name="executionStrategy">The execution strategy</param>
+            <returns>The subscriber options</returns>
+        </member>
+        <member name="T:MvvmLib.Message.EventAggregator">
+            <summary>
+            Allows to exchange message between subscribers and publishers.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.EventAggregator.SynchronizationContext">
+            <summary>
+            The current synchronization context.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.EventAggregator.GetEvent``1">
+            <summary>
+            Gets or create the event.
+            </summary>
+            <typeparam name="TEvent">The event type</typeparam>
+            <returns>The event class</returns>
+        </member>
+        <member name="T:MvvmLib.Message.ExecutionStrategyType">
+            <summary>
+            The execution strategy.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Message.ExecutionStrategyType.PublisherThread">
+            <summary>
+            Publish Thread (default)
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Message.ExecutionStrategyType.UIThread">
+            <summary>
+             UI Thread
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Message.ExecutionStrategyType.BackgroundThread">
+            <summary>
+            Background Thread
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Message.ParameterizedEvent`1">
+            <summary>
+            Event with event args or parameter.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Message.ParameterizedEvent`1.subscribers">
+            <summary>
+            Payload : EventArgs class or string, ...
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.ParameterizedEvent`1.SynchronizationContext">
+            <summary>
+            The synchronization context.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.ParameterizedEvent`1.Contains(System.Action{`0})">
+            <summary>
+            Checks if a subscriber is registered for the action.
+            </summary>
+            <param name="action">The action</param>
+            <returns>True if registered</returns>
+        </member>
+        <member name="M:MvvmLib.Message.ParameterizedEvent`1.Subscribe(System.Action{`0})">
+            <summary>
+            Checks if a subscriber is registered for the action.
+            </summary>
+            <param name="action">The action</param>
+            <returns>True if registered</returns>
+        </member>
+        <member name="M:MvvmLib.Message.ParameterizedEvent`1.Unsubscribe(MvvmLib.Message.SubscriptionToken)">
+            <summary>
+            Allows to subscribe to the event.
+            </summary>
+            <returns>The subscription options</returns>
+        </member>
+        <member name="M:MvvmLib.Message.ParameterizedEvent`1.Publish(`0)">
+            <summary>
+            Notifies all subscribers.
+            </summary>
+            <param name="payload">The payload</param>
+        </member>
+        <member name="T:MvvmLib.Message.SubscriberOptions`1">
+            <summary>
+            Subscriber options class.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.SubscriberOptions`1.Token">
+            <summary>
+            The token.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriberOptions`1.#ctor(MvvmLib.Message.Subscriber{`0})">
+            <summary>
+            Creates the subscriber options class.
+            </summary>
+            <param name="subscriber">The subscriber</param>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriberOptions`1.WithFilter(System.Func{`0,System.Boolean})">
+            <summary>
+            Allwos to define a filter.
+            </summary>
+            <param name="filter">The filter</param>
+            <returns>The subscriber options</returns>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriberOptions`1.WithExecutionStrategy(MvvmLib.Message.ExecutionStrategyType)">
+            <summary>
+            Allows to change executionstrategy.
+            </summary>
+            <param name="executionStrategy">The execution strategy</param>
+            <returns>The subscriber options</returns>
+        </member>
+        <member name="T:MvvmLib.Message.IEvent">
+            <summary>
+            The event contract.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.IEvent.SynchronizationContext">
+            <summary>
+            The synchronization context.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Message.IEventAggregator">
+            <summary>
+            Allows to exchange message between subscribers and publishers.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.IEventAggregator.GetEvent``1">
+            <summary>
+            Gets or create the event.
+            </summary>
+            <typeparam name="TEvent">The event type</typeparam>
+            <returns>The event class</returns>
+        </member>
+        <member name="T:MvvmLib.Message.SubscriptionToken">
+            <summary>
+            The subscription token class.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriptionToken.#ctor(System.Func{MvvmLib.Message.SubscriptionToken,System.Boolean})">
+            <summary>
+            Creates the subscription token class.
+            </summary>
+            <param name="unsubscribe">The unsubscribe function</param>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriptionToken.Equals(MvvmLib.Message.SubscriptionToken)">
+            <summary>
+            Checks if the guid equals to the othe guid.
+            </summary>
+            <param name="other">The other</param>
+            <returns>True if equals</returns>
+        </member>
+        <member name="M:MvvmLib.Message.SubscriptionToken.Dispose">
+            <summary>
+            Dispose the subscription token class.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Message.IWeakDelegate">
+            <summary>
+            Use Weak references to store and create delegates.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.IWeakDelegate.Target">
+            <summary>
+            Tries to create a delegate if weak reference target is alive.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Message.WeakDelegate">
+            <summary>
+            Use Weak references to store and create delegates.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Message.WeakDelegate.Target">
+            <summary>
+            Tries to create a delegate if weak reference target is alive.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Message.WeakDelegate.#ctor(System.Delegate)">
+            <summary>
+            Creates the weak delegate class.
+            </summary>
+            <param name="delegate">The delegate</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.BindableBase">
+            <summary>
+            Base class for models and view models. Implements <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>. Allows to notify that a property has changed.
+            </summary>
+        </member>
+        <member name="E:MvvmLib.Mvvm.BindableBase.PropertyChanged">
+            <summary>
+            The property changed event handler.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            Sets the value of the property.
+            </summary>
+            <typeparam name="T">The type of the property</typeparam>
+            <param name="storage">The field</param>
+            <param name="value">The new value</param>
+            <param name="propertyName">The property name</param>
+            <returns>True if the value has changed</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.BindableBase.RaisePropertyChanged(System.String)">
+            <summary>
+            Notifies that a property has changed.
+            </summary>
+            <param name="propertyName">The property name</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.BindableBase.RaisePropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Notifies that a property has changed.
+            </summary>
+            <typeparam name="T">The property type</typeparam>
+            <param name="expression">The Linq expression</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.CompositeCommand">
+            <summary>
+            The composite can executes multiple commands.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.CompositeCommand.commands">
+            <summary>
+            The list of the commands to execute.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.CompositeCommand.Commands">
+            <summary>
+            The list of the commands to execute.
+            </summary>
+        </member>
+        <member name="E:MvvmLib.Mvvm.CompositeCommand.CanExecuteChanged">
+            <summary>
+            Can execute changed event.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CompositeCommand.#ctor">
+            <summary>
+            Creates a composite command and add commands.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CompositeCommand.Add(System.Windows.Input.ICommand)">
+            <summary>
+            Adds a new command to the composite command.
+            </summary>
+            <param name="command">The command</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CompositeCommand.Remove(System.Windows.Input.ICommand)">
+            <summary>
+            Remove the command from commands list.
+            </summary>
+            <param name="command">The command</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CompositeCommand.OnCommandCanExecuteChanged(System.Object,System.EventArgs)">
+            <summary>
+            Allows the composite command to be notified on command can execute changed.
+            </summary>
+            <param name="sender">The command</param>
+            <param name="e">The event args</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CompositeCommand.CanExecute(System.Object)">
+            <summary>
+            Checks if commands have to be executed.
+            </summary>
+            <param name="parameter">The parameter</param>
+            <returns>True if all commands can execute</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CompositeCommand.Execute(System.Object)">
+            <summary>
+            Invokes the execute command.
+            </summary>
+            <param name="parameter">The parameter</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.INotifyPropertyChangedObserver">
+            <summary>
+            Allows to subscribe and notify on property changed for an object that implements <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.INotifyPropertyChangedObserver.SubscribeToPropertyChanged(System.Action{System.ComponentModel.PropertyChangedEventArgs})">
+            <summary>
+            Subscribe to property changed of the owner.
+            </summary>
+            <param name="onPropertyChangedCallback">The callback invoked on property changed</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.INotifyPropertyChangedObserver.UnsubscribeToPropertyChanged">
+            <summary>
+            Unsubscribe to property changed of the owner.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Mvvm.IRelayCommand">
+            <summary>
+            Contract for relay commands.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.IRelayCommand.RaiseCanExecuteChanged">
+            <summary>
+            Notify that the can execute method have to be executed.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Mvvm.NotifyPropertyChangedObserver">
+            <summary>
+            Allows to subscribe and notify on property changed for an object that implements <see cref="T:System.ComponentModel.INotifyPropertyChanged"/>.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.NotifyPropertyChangedObserver.owner">
+            <summary>
+            The owner class.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.NotifyPropertyChangedObserver.onPropertyChangedCallback">
+            <summary>
+            The callback.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.NotifyPropertyChangedObserver.#ctor(System.ComponentModel.INotifyPropertyChanged)">
+            <summary>
+            Creates the property changed observer.
+            </summary>
+            <param name="owner">The owner class to observe</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.NotifyPropertyChangedObserver.SubscribeToPropertyChanged(System.Action{System.ComponentModel.PropertyChangedEventArgs})">
+            <summary>
+            Subscribe to property changed of the owner.
+            </summary>
+            <param name="onPropertyChangedCallback">The callback invoked on property changed</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.NotifyPropertyChangedObserver.UnsubscribeToPropertyChanged">
+            <summary>
+            Unsubscribe to property changed of the owner.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.NotifyPropertyChangedObserver.OnPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            The method invoked on property changed to notify the subscribers.
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The PropertyChangedEventArgs</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.FilterableNotifyPropertyChangedObserver">
+            <summary>
+            Allows to filter on property changed with the base class <see cref="T:MvvmLib.Mvvm.NotifyPropertyChangedObserver"/>.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.FilterableNotifyPropertyChangedObserver.filter">
+            <summary>
+            The filter to use.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.FilterableNotifyPropertyChangedObserver.#ctor(System.ComponentModel.INotifyPropertyChanged,System.Func{System.ComponentModel.INotifyPropertyChanged,System.ComponentModel.PropertyChangedEventArgs,System.Boolean})">
+            <summary>
+            Creates the filterable notify property changed observer class.
+            </summary>
+            <param name="owner">The owner class</param>
+            <param name="filter">The filter</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.FilterableNotifyPropertyChangedObserver.OnPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            The method invoked on property changed to notify the subscribers.
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The PropertyChangedEventArgs</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.RelayCommand">
+            <summary>
+            A command with no parameter.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.RelayCommand.executeCommand">
+            <summary>
+            The action to execute.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.RelayCommand.canExecuteCommand">
+            <summary>
+            The function to check if command have to be executed.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Creates a Relay command.
+            </summary>
+            <param name="executeCommand">The action to execute</param>
+            <param name="canExecuteCommand">The function to check if command have to be executed</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand.#ctor(System.Action)">
+            <summary>
+            Creates a Relay command.
+            </summary>
+            <param name="executeCommand">The action to execute</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Checks if command have to be executed.
+            </summary>
+            <param name="parameter">The parameter</param>
+            <returns>True if command have to be executed</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand.Execute(System.Object)">
+            <summary>
+            Invokes the execute command.
+            </summary>
+            <param name="parameter">The parameter</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.RelayCommandBase">
+            <summary>
+            The base class for commands.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.RelayCommandBase.observedProperties">
+            <summary>
+            The observed properties.
+            </summary>
+        </member>
+        <member name="E:MvvmLib.Mvvm.RelayCommandBase.CanExecuteChanged">
+            <summary>
+            Can execute changed event.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommandBase.CanExecute(System.Object)">
+            <summary>
+            Checks if commands have to be executed.
+            </summary>
+            <param name="parameter">The parameter</param>
+            <returns>True if all commands can execute</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommandBase.Execute(System.Object)">
+            <summary>
+            Invokes the execute command.
+            </summary>
+            <param name="parameter">The parameter</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommandBase.RaiseCanExecuteChanged">
+            <summary>
+            Notify that the can execute method have to be executed.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommandBase.ObservePropertyInternal``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Observes <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> event for a property and raises <see cref="M:MvvmLib.Mvvm.RelayCommandBase.RaiseCanExecuteChanged"/> automatically.
+            </summary>
+            <typeparam name="T">The type of property</typeparam>
+            <param name="propertyExpression">The property expression</param>
+            <returns>The command</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommandBase.ObserveProperty``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Observes <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> event for a property and raises <see cref="M:MvvmLib.Mvvm.RelayCommandBase.RaiseCanExecuteChanged"/> automatically.
+            </summary>
+            <typeparam name="T">The type of property</typeparam>
+            <param name="propertyExpression">The property expression</param>
+            <returns>The command</returns>
+        </member>
+        <member name="T:MvvmLib.Mvvm.RelayCommand`1">
+            <summary>
+            Generic command with parameter.
+            </summary>
+            <typeparam name="TParameter">The parameter type</typeparam>
+        </member>
+        <member name="F:MvvmLib.Mvvm.RelayCommand`1.executeCommand">
+            <summary>
+            The action to execute.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.RelayCommand`1.canExecuteCommand">
+            <summary>
+            The function to check if command have to be executed.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Creates a Relay command.
+            </summary>
+            <param name="executeCommand">The action to execute</param>
+            <param name="canExecuteCommand">The function to check if command have to be executed</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand`1.#ctor(System.Action{`0})">
+            <summary>
+            Creates a Relay command.
+            </summary>
+            <param name="executeCommand">The action to execute</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand`1.CanExecute(System.Object)">
+            <summary>
+            Checks if command have to be executed.
+            </summary>
+            <param name="parameter">The parameter</param>
+            <returns>True if command have to be executed</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.RelayCommand`1.Execute(System.Object)">
+            <summary>
+            Invokes the execute command.
+            </summary>
+            <param name="parameter">The parameter</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.ISyncItem`1">
+            <summary>
+            Updates the values only if required.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ISyncItem`1.Sync(`0)">
+            <summary>
+            Synchronize the current to other value(s).
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ISyncItem`1.NeedSync(`0)">
+            <summary>
+            Checks if the update is required.
+            </summary>
+            <param name="other">The other value</param>
+            <returns>Tru if required</returns>
+        </member>
+        <member name="T:MvvmLib.Mvvm.Singleton`1">
+            <summary>
+            Allows to create quickly a singleton with <see cref="T:System.Collections.Concurrent.ConcurrentDictionary`2"/>
+            </summary>
+            <typeparam name="T">The type of class</typeparam>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Singleton`1.Instance">
+            <summary>
+            The singleton instance.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Mvvm.SyncListExtension">
+            <summary>
+            Updates the values only if required.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.SyncListExtension.Sync``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
+            <summary>
+            Synchronize the current to other value(s).
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="oldValues">The old values</param>
+            <param name="newValues">The new values</param>
+        </member>
+        <member name="T:MvvmLib.Mvvm.CircularReferenceManager">
+            <summary>
+            Allows to manage circular references.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CircularReferenceManager.#ctor">
+            <summary>
+            Creates the circular reference manager.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CircularReferenceManager.IsInstanceRegistered(System.Object)">
+            <summary>
+            Checks if the source is registered.
+            </summary>
+            <param name="source">The object source</param>
+            <returns>True if registered</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CircularReferenceManager.AddInstance(System.Object,System.Object)">
+            <summary>
+            Adds an instance.
+            </summary>
+            <param name="source">The object source</param>
+            <param name="instance">The instance</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CircularReferenceManager.TryGetInstance(System.Object)">
+            <summary>
+            Tries to get a stored instance.
+            </summary>
+            <param name="source">The object source</param>
+            <returns>The instance found or null</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.CircularReferenceManager.Clear">
+            <summary>
+            Clears the registered instances.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Mvvm.Editable">
+            <summary>
+            Implements <see cref="T:System.ComponentModel.IEditableObject" />. Allows cancel edition of an object.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Editable.editableService">
+            <summary>
+            The editable object service.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Editable.#ctor">
+            <summary>
+            Creates the editable.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Editable.#ctor(MvvmLib.Mvvm.IEditableObjectService)">
+            <summary>
+            Creates the editable.
+            </summary>
+            <param name="editableService">The editable object service.</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Editable.BeginEdit">
+            <summary>
+            Clones the values.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Editable.CancelEdit">
+            <summary>
+            Reset the values.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Editable.EndEdit">
+            <summary>
+            Clear the cloned values and notify changes.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Mvvm.ModelWrapper`1">
+            <summary>
+            Base class for wrapping a model. Allows to validate and edit properties.
+            </summary>
+            <typeparam name="TModel">The model</typeparam>
+        </member>
+        <member name="P:MvvmLib.Mvvm.ModelWrapper`1.Model">
+            <summary>
+            The model.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.ModelWrapper`1.editableObjectService">
+            <summary>
+            The editable object service.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.#ctor(`0,MvvmLib.Mvvm.IEditableObjectService)">
+            <summary>
+            Creates the model wrapper class.
+            </summary>
+            <param name="model">The model</param>
+            <param name="editableObjectService">The editable object service</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.#ctor(`0)">
+            <summary>
+            Creates the model wrapper class.
+            </summary>
+            <param name="model">The model</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.GetProperty(System.String)">
+            <summary>
+            Gets the property.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>The <see cref="T:System.Reflection.PropertyInfo"/> or null</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.GetValue``1(System.String)">
+            <summary>
+            Gets the value for a property.
+            </summary>
+            <typeparam name="TValue">The value type</typeparam>
+            <param name="propertyName">The property name</param>
+            <returns>The value</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.SetValue``1(``0,System.String)">
+            <summary>
+            Sets the value for a property.
+            </summary>
+            <typeparam name="TValue">The value type</typeparam>
+            <param name="value">The new value</param>
+            <param name="propertyName">The property name</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.BeginEdit">
+            <summary>
+            Clones the values fo the model.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.CancelEdit">
+            <summary>
+            Reset the values of the model and clear errors.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ModelWrapper`1.EndEdit">
+            <summary>
+            Clear the cloned values and notify changes.
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Mvvm.ValidationHandling">
+            <summary>
+            The validation type.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.ValidationHandling.OnPropertyChange">
+            <summary>
+            On property changed
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.ValidationHandling.OnSubmit">
+            <summary>
+            After ValidateAll invoked
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.ValidationHandling.Explicit">
+            <summary>
+            Only with ValidateAll and ValidateProperty invoked
+            </summary>
+        </member>
+        <member name="T:MvvmLib.Mvvm.BindableErrorContainer">
+            <summary>
+            Allows to bind errors.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.BindableErrorContainer.Item(System.String)">
+            <summary>
+            Returns the list of errors or an empty list for the property.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>The list of errors or an empty list for the property.</returns>
+        </member>
+        <member name="P:MvvmLib.Mvvm.BindableErrorContainer.Count">
+            <summary>
+            The count of errors by property name.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.BindableErrorContainer.ContainErrors(System.String)">
+            <summary>
+            Checks if the property has errors.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>True if the property has errors</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.BindableErrorContainer.ContainError(System.String,System.String)">
+            <summary>
+            Checks if the property has already the error.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <param name="error">The error</param>
+            <returns>True if the property has already the error</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.BindableErrorContainer.AddError(System.String,System.String)">
+            <summary>
+            Adds an error for the property
+            </summary>
+            <param name="propertyName">The property name</param>
+            <param name="error">The error</param>
+            <returns>True if the error is added</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.BindableErrorContainer.ClearErrors(System.String)">
+            <summary>
+            Clears the errors for the proeprty.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>True the property has errors</returns>
+        </member>
+        <member name="T:MvvmLib.Mvvm.Validatable">
+            <summary>
+            Implements <see cref="T:System.ComponentModel.INotifyDataErrorInfo"/>. Allows to validate properties with <see cref="N:System.ComponentModel.DataAnnotations"/> or cutom validations.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.source">
+            <summary>
+            The source.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.propertyCache">
+            <summary>
+            The property cache.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.errors">
+            <summary>
+            The error container.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Validatable.Errors">
+            <summary>
+            The error container.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.propertiesToIgnore">
+            <summary>
+            The list of properties to ignore.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.validationType">
+            <summary>
+            The validation type, <see cref="F:MvvmLib.Mvvm.ValidationHandling.OnPropertyChange"/> by default.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Validatable.ValidationType">
+            <summary>
+            The validation type, <see cref="F:MvvmLib.Mvvm.ValidationHandling.OnPropertyChange"/> by default.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.useDataAnnotations">
+            <summary>
+            Allows to use or not  <see cref="N:System.ComponentModel.DataAnnotations"/> for validation, true by default.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Validatable.UseDataAnnotations">
+            <summary>
+            Allows to use or not  <see cref="N:System.ComponentModel.DataAnnotations"/> for validation, true by default.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.useCustomValidations">
+            <summary>
+            Allows to use custom validation, true by default.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Validatable.UseCustomValidations">
+            <summary>
+            Allows to use custom validation, true by default.
+            </summary>
+        </member>
+        <member name="F:MvvmLib.Mvvm.Validatable.isSubmitted">
+            <summary>
+            True when the <see cref="M:MvvmLib.Mvvm.Validatable.ValidateAll"/> has been invoked.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Validatable.IsSubmitted">
+            <summary>
+            True when the <see cref="M:MvvmLib.Mvvm.Validatable.ValidateAll"/> has been invoked.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Validatable.CanValidateOnPropertyChanged">
+            <summary>
+            Checks if can validate when a property has changed.
+            </summary>
+        </member>
+        <member name="P:MvvmLib.Mvvm.Validatable.HasErrors">
+            <summary>
+            True if the source has errors.
+            </summary>
+        </member>
+        <member name="E:MvvmLib.Mvvm.Validatable.ErrorsChanged">
+            <summary>
+            Invoked when errors changed.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.GetErrors(System.String)">
+            <summary>
+            Gets the errors for a property name.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>The errors or null</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.#ctor(System.Object)">
+            <summary>
+            Creates the validatable class.
+            </summary>
+            <param name="model">The model / source for validation ("this" if null)</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ContainPropertyToIgnore(System.String)">
+            <summary>
+            Checks if the property is to ignore.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>True if ignored</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.AddPropertyToIgnore(System.String)">
+            <summary>
+            Adds a property to ignore.
+            </summary>
+            <param name="propertyName">The property name</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.RemovePropertyToIgnore(System.String)">
+            <summary>
+            Removes a property to ignore.
+            </summary>
+            <param name="propertyName">The property name</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ContainErrors(System.String)">
+            <summary>
+            Checks if there is errors for the property.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>True if the property has errors</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ContainError(System.String,System.String)">
+            <summary>
+            Checks if the property has already the error.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <param name="error">The error</param>
+            <returns>True if the property has already the error</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.AddError(System.String,System.String)">
+            <summary>
+            Adds an error for the property
+            </summary>
+            <param name="propertyName">The property name</param>
+            <param name="error">The error</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ClearErrors(System.String)">
+            <summary>
+            Clears the erros for the property.
+            </summary>
+            <param name="propertyName">The property name</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ClearErrors">
+            <summary>
+            Clears the errors for all properties.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.RaiseErrorsChanged(System.String)">
+            <summary>
+            Raises the <see cref="E:System.ComponentModel.INotifyDataErrorInfo.ErrorsChanged"/> event.
+            </summary>
+            <param name="propertyName">The property name</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ValidateDataAnnotations(System.String,System.Object)">
+            <summary>
+            Validate with <see cref="N:System.ComponentModel.DataAnnotations"/>.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <param name="value">The value to check</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.DoCustomValidations(System.String)">
+            <summary>
+            Allows to validate with custom validations.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <returns>The list of errors or null</returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ValidateCustomErrors(System.String)">
+            <summary>
+            Validates with custom validations.
+            </summary>
+            <param name="propertyName">The property name</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ValidateProperty(System.String,System.Object)">
+            <summary>
+            Validates a propeprty.
+            </summary>
+            <param name="propertyName">The property name</param>
+            <param name="value">The value to check</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.GetProperties">
+            <summary>
+            Gets the properties.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.ValidateAll">
+            <summary>
+            Validates all properties and sets <see cref="P:MvvmLib.Mvvm.Validatable.IsSubmitted"/> to true.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.Reset">
+            <summary>
+            Resets all errors and options.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.Validatable.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            Sets the property, validates if <see cref="P:MvvmLib.Mvvm.Validatable.CanValidateOnPropertyChanged"/> and raises <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> event.
+            </summary>
+            <typeparam name="TValue">The type of value</typeparam>
+            <param name="storage">The storage</param>
+            <param name="value">The value</param>
+            <param name="propertyName">The property name</param>
+            <returns>True if value is updated</returns>
+        </member>
+        <member name="T:MvvmLib.Mvvm.ValidatableAndEditable">
+            <summary>
+            Allows to validate and edit properties.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ValidatableAndEditable.#ctor(MvvmLib.Mvvm.IEditableObjectService,System.Object)">
+            <summary>
+            Creates the editable.
+            </summary>
+            <param name="editableService">The editable object service.</param>
+            <param name="model">The model / source for validation ("this" if null)</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ValidatableAndEditable.#ctor(System.Object)">
+            <summary>
+            Creates the validatatble and editable class.
+            </summary>
+            <param name="model">The model / source for validation ("this" if null)</param>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ValidatableAndEditable.BeginEdit">
+            <summary>
+            Clones the values.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ValidatableAndEditable.CancelEdit">
+            <summary>
+            Reset the values and errors.
+            </summary>
+        </member>
+        <member name="M:MvvmLib.Mvvm.ValidatableAndEditable.EndEdit">
+            <summary>
+            Clear the cloned values and notify changes.
+            </summary>
+        </member>
+    </members>
+</doc>
