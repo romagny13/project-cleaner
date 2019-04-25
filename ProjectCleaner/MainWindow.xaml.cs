@@ -12,21 +12,21 @@ namespace ProjectCleaner
 {
     public partial class MainWindow : Window
     {
-        SolutionCleaner solutionCleaner;
+        DirectoryCleaner cleaner;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            solutionCleaner = new SolutionCleaner();
+            cleaner = new DirectoryCleaner();
 
-            solutionCleaner.Starting += OnStarting;
-            solutionCleaner.Completed += OnCompleted;
-            solutionCleaner.Failed += OnFailed;
+            cleaner.Starting += OnStarting;
+            cleaner.Completed += OnCompleted;
+            cleaner.Failed += OnFailed;
 
             StatusMessage.Text = "Ready";
 
-            this.DataContext = solutionCleaner;
+            this.DataContext = cleaner;
         }
 
         private void OnStarting(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace ProjectCleaner
 
         private void AddDirectoryToRemove(object sender, RoutedEventArgs e)
         {
-            var dialog = new DirectoryToRemoveDialog((t) => solutionCleaner.AddDirectoryToRemove(t));
+            var dialog = new DirectoryToRemoveDialog((t) => cleaner.AddDirectoryToRemove(t));
             dialog.Show();
         }
 
@@ -56,12 +56,12 @@ namespace ProjectCleaner
         {
             var directoryName = DirectoriesToRemoveListView.SelectedValue;
             if (directoryName != null)
-                solutionCleaner.DirectoriesToRemove.Remove(directoryName.ToString());
+                cleaner.DirectoriesToRemove.Remove(directoryName.ToString());
 
         }
     }
 
-    public class SolutionCleaner : BindableBase
+    public class DirectoryCleaner : BindableBase
     {
         private string baseDirectory;
         public string BaseDirectory
@@ -92,7 +92,7 @@ namespace ProjectCleaner
 
         public event EventHandler<Exception> Failed;
 
-        public SolutionCleaner()
+        public DirectoryCleaner()
         {
             directoriesToRemove = new ObservableCollection<string>
             {

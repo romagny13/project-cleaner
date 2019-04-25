@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjectCleaner"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Solution cleaner" Height="360" Width="640" Icon="cleaner.ico">
+        Title="Project cleaner" Height="360" Width="640" Icon="cleaner.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
